@@ -8,6 +8,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json());
 // Sample API endpoint - JSONPlaceholder is a fake REST API
 const API_URL = 'https://jsonplaceholder.typicode.com';
 
+console.log('API_URL', API_URL)
 function SWRDataFetcher() {
   const [selectedUserId, setSelectedUserId] = useState(1);
   const [tab, setTab] = useState('posts'); // 'posts' or 'comments'
