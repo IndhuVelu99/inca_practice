@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-  console.log('Rendering LoginForm component');
+  console.log("Rendering LoginForm component");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
@@ -21,30 +21,36 @@ export default function LoginForm() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       if (!email || !password) {
-        setError('Please fill in all fields');
+        setError("Please fill in all fields");
         setLoading(false);
         return;
       }
 
-      if (!email.includes('@')) {
-        setError('Please enter a valid email');
+      if (!email.includes("@")) {
+        setError("Please enter a valid email");
         setLoading(false);
         return;
       }
 
       // Here you would typically send credentials to your backend
-      console.log('Login attempt:', { email, password });
-      alert('Login successful! (Demo only)');
-      setEmail('');
-      setPassword('');
+      console.log("Login attempt:", { email, password });
+      alert("Login successful! (Demo only)");
+      setEmail("");
+      setPassword("");
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-  console.log('LoginForm state:', { email, password, showPassword, loading, error });
-
+  console.log("LoginForm state:", {
+    email,
+    password,
+    showPassword,
+    loading,
+    error,
+  });
+  console.log("LoginForm handlers:");
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -52,7 +58,9 @@ export default function LoginForm() {
         <div className="bg-white rounded-lg shadow-2xl p-8">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Welcome Back
+            </h1>
             <p className="text-gray-600">Sign in to your account</p>
           </div>
 
@@ -67,7 +75,10 @@ export default function LoginForm() {
 
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email Address
               </label>
               <input
@@ -84,16 +95,22 @@ export default function LoginForm() {
             {/* Password Field */}
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Password
                 </label>
-                <a href="#" className="text-sm text-blue-600 hover:text-blue-700">
+                <a
+                  href="#"
+                  className="text-sm text-blue-600 hover:text-blue-700"
+                >
                   Forgot?
                 </a>
               </div>
               <div className="relative">
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -107,11 +124,7 @@ export default function LoginForm() {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                   disabled={loading}
                 >
-                  {showPassword ? (
-                    <EyeOff size={20} />
-                  ) : (
-                    <Eye size={20} />
-                  )}
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
             </div>
@@ -160,7 +173,7 @@ export default function LoginForm() {
                   Signing in...
                 </span>
               ) : (
-                'Sign In'
+                "Sign In"
               )}
             </button>
           </form>
@@ -171,7 +184,9 @@ export default function LoginForm() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-white text-gray-500">
+                Or continue with
+              </span>
             </div>
           </div>
 
@@ -200,7 +215,9 @@ export default function LoginForm() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              <span className="ml-2 text-sm font-medium text-gray-700">Google</span>
+              <span className="ml-2 text-sm font-medium text-gray-700">
+                Google
+              </span>
             </button>
             <button
               type="button"
@@ -210,14 +227,19 @@ export default function LoginForm() {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.603-3.369-1.343-3.369-1.343-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.547 2.91 1.186.092-.923.35-1.546.636-1.903-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.817c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.192 20 14.435 20 10.017 20 4.484 15.522 0 10 0z" />
               </svg>
-              <span className="ml-2 text-sm font-medium text-gray-700">GitHub</span>
+              <span className="ml-2 text-sm font-medium text-gray-700">
+                GitHub
+              </span>
             </button>
           </div>
 
           {/* Sign Up Link */}
           <p className="mt-8 text-center text-gray-600 text-sm">
-            Don't have an account?{' '}
-            <a href="#" className="font-medium text-blue-600 hover:text-blue-700">
+            Don't have an account?{" "}
+            <a
+              href="#"
+              className="font-medium text-blue-600 hover:text-blue-700"
+            >
               Sign up
             </a>
           </p>
